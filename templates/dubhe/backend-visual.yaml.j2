@@ -65,7 +65,7 @@ spec:
           # image: "{{ .Values.dubhe.image.host }}/{{ .Values.dubhe.image.repository }}/visual-server:{{ .Values.dubhe.image.tag }}"
           image: registry.cn-hangzhou.aliyuncs.com/enlin/visual-server:v1
           command: ["/bin/bash", "-c", "/home/dubhe-visual-server-v2/start_server.sh"]
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           volumeMounts:
             - name: dubhe-vol
               mountPath: /nfs

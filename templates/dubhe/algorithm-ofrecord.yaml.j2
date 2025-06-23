@@ -27,7 +27,7 @@ spec:
       containers:
         - name: algorithm-ofrecord
           image: registry.cn-hangzhou.aliyuncs.com/enlin/ofrecord:v1
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           lifecycle:
             preStop:
               exec:

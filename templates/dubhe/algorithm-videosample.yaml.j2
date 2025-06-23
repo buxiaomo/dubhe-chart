@@ -27,7 +27,7 @@ spec:
       containers:
         - name: algorithm-videosample
           image: "{{ .Values.dubhe.image.host }}/{{ .Values.dubhe.image.repository }}/dubhe-data-process:{{ .Values.dubhe.image.tag }}"
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           lifecycle:
             preStop:
               exec:

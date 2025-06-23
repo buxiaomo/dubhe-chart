@@ -34,7 +34,7 @@ spec:
       containers:
         - name: web
           image: "{{ .Values.dubhe.image.host }}/{{ .Values.dubhe.image.repository }}/web:{{ .Values.dubhe.image.tag }}"
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - name: http
               containerPort: 80
