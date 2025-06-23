@@ -1,0 +1,60 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: algorithm-ofrecord
+  labels:
+    app: algorithm-ofrecord
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: algorithm-ofrecord
+  template:
+    metadata:
+      labels:
+        app: algorithm-ofrecord
+    spec:
+      terminationGracePeriodSeconds: 60
+      volumes:
+        - name: dubhe-vol
+          hostPath:
+            path: {{ .Values.dubhe.hostPath }}
+        - name: dubhe
+          configMap:
+            defaultMode: 0755
+            name: dubhe
+      containers:
+        - name: algorithm-ofrecord
+          image: registry.cn-hangzhou.aliyuncs.com/enlin/ofrecord:v1
+          imagePullPolicy: Always
+          lifecycle:
+            preStop:
+              exec:
+                command: ["test","-e","/root/.startup"]
+          command: ["/bin/bash","-c","cd /dubhe_data_process && python main.py ofrecord True {{ .Values.dubhe.redis.host }},{{ .Values.dubhe.redis.port }},10,'{{ .Values.dubhe.redis.password }}'"]
+          volumeMounts:
+            - name: dubhe-vol
+              mountPath: /nfs
+            - name: dubhe-vol
+              mountPath: /dubhe_data_process
+              subPath: dubhe_data_process
+          ports:
+            - name: http
+              containerPort: 9898
+              protocol: TCP
+          # livenessProbe:
+          #   initialDelaySeconds: 90
+          #   periodSeconds: 5
+          #   timeoutSeconds: 5
+          #   tcpSocket:
+          #     port: 9898
+          # readinessProbe:
+          #   initialDelaySeconds: 5
+          #   periodSeconds: 5
+          #   timeoutSeconds: 5
+          #   tcpSocket:
+          #     port: 9898
+          env:
+            - name: TZ
+              value: "Asia/Shanghai"
