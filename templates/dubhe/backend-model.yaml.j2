@@ -60,9 +60,9 @@ spec:
           volumeMounts:
             - name: dubhe-vol
               mountPath: /nfs
-            # - name: dubhe
-            #   mountPath: /app/bootstrap-prod.yml
-            #   subPath: bootstrap-prod.yml
+            - name: dubhe
+              mountPath: /app/bootstrap-prod.yml
+              subPath: bootstrap-prod.yml
           ports:
             - name: http
               containerPort: 8888
