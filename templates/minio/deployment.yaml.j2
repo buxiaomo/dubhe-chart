@@ -21,7 +21,7 @@ spec:
       containers:
         - name: minio
           image: "{{ .Values.minio.image.repository }}:{{ .Values.minio.image.tag }}"
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           command: 
             - "/bin/sh"
             - "-ce"

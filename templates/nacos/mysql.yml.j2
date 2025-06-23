@@ -133,7 +133,7 @@ spec:
       containers:
         - name: nacos-mysql
           image: "{{ .Values.nacos.mysql.image.repository }}:{{ .Values.nacos.mysql.image.tag }}"
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           volumeMounts:
             - name: nacos-mysql-vol
               subPath: nacos-mysql-vol

@@ -54,7 +54,7 @@ spec:
       containers:
         - name: grafana
           image: "{{ .Values.monitoring.grafana.image.repository }}:{{ .Values.monitoring.grafana.image.tag }}"
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           volumeMounts:
             - name: grafana-vol
               mountPath: /var/lib/grafana

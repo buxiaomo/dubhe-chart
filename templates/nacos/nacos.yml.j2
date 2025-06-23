@@ -27,7 +27,7 @@ spec:
       containers:
         - name: nacos
           image: "{{ .Values.nacos.image.repository }}:{{ .Values.nacos.image.tag }}"
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - name: tcp
               containerPort: 8848

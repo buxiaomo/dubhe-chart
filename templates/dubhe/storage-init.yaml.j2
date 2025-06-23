@@ -14,6 +14,7 @@ spec:
       containers:
         - name: storage-init
           image: "{{ .Values.dubhe.image.host }}/{{ .Values.dubhe.image.repository }}/storage-init:{{ .Values.dubhe.image.tag }}"
+          imagePullPolicy: IfNotPresent
           env:
             - name: DUBHE_ENVIRONMENT
               value: "dubhe-prod"

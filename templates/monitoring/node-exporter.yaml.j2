@@ -31,6 +31,7 @@ spec:
       containers:
         - name: node-exporter
           image: "{{ .Values.monitoring.nodexporter.image.repository }}:{{ .Values.monitoring.nodexporter.image.tag }}"
+          imagePullPolicy: IfNotPresent
           resources:
             requests:
               cpu: "1m"

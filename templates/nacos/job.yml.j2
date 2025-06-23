@@ -1253,6 +1253,7 @@ spec:
       initContainers:
         - name: wait-for-service
           image: docker.io/buxiaomo/curl:latest
+          imagePullPolicy: IfNotPresent
           command: 
           - 'sh'
           - '-c'
@@ -1267,6 +1268,7 @@ spec:
       containers:
         - name: curl
           image: docker.io/buxiaomo/curl:latest
+          imagePullPolicy: IfNotPresent
           workingDir: /dubhe
           command:
           - /bin/sh

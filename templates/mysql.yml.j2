@@ -160,7 +160,7 @@ spec:
       containers:
         - name: dubhe-mysql
           image: "{{ .Values.dubhe.image.host }}/{{ .Values.dubhe.image.repository }}/mysql:{{ .Values.dubhe.image.tag }}"
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           volumeMounts:
             - name: dubhe-mysql-vol
               subPath: dubhe-mysql-vol

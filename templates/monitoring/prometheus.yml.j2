@@ -236,6 +236,7 @@ spec:
       initContainers:
         - name: chown
           image: "{{ .Values.monitoring.initContainers.infra.image.repository }}:{{ .Values.monitoring.initContainers.infra.image.tag }}"
+          imagePullPolicy: IfNotPresent
           command: ["/bin/chown", "-R", "65534.65534", "/prometheus"]
           volumeMounts:
             - name: prometheus-vol
@@ -245,6 +246,7 @@ spec:
       containers:
         - name: prometheus
           image: "{{ .Values.monitoring.prometheus.image.repository }}:{{ .Values.monitoring.prometheus.image.tag }}"
+          imagePullPolicy: IfNotPresent
           command:
             - "/bin/prometheus"
           args:
