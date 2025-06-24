@@ -71,7 +71,7 @@ spec:
               containerPort: 389
               protocol: TCP
           livenessProbe:
-            initialDelaySeconds: 90
+            initialDelaySeconds: 10
             periodSeconds: 10
             timeoutSeconds: 5
             tcpSocket:
@@ -99,7 +99,7 @@ spec:
               containerPort: 5432
               protocol: TCP
           livenessProbe:
-            initialDelaySeconds: 90
+            initialDelaySeconds: 10
             periodSeconds: 10
             timeoutSeconds: 5
             tcpSocket:
