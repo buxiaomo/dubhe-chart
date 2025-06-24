@@ -322,7 +322,7 @@ data:
     
     # minio配置
     minio:
-      url: "http://{{ .Values.external_url }}:30900/"
+      url: "http://{{ .Values.external_url.web }}/minio"
       accessKey: {{ .Values.minio.accesskey }}
       secretKey: {{ .Values.minio.secretkey }}
       bucketName: dubhe-prod
@@ -380,13 +380,13 @@ data:
     unittest:
       username: admin
       password: admin
-    
-    
+
+
     model:
       measuring:
         url:
-          package: "http://{{ .Values.external_url }}:32760/model_measure/package"
-          json: "http://{{ .Values.external_url }}:32760/model_measure/measure"
+          package: "http://{{ .Values.external_url.web }}/model_measure/package"
+          json: "http://{{ .Values.external_url.web }}/model_measure/measure"
       converter:
         url: "http://backend-model-converter.{{.Release.Namespace}}.svc.cluster.local:8080/model_convert"    
 
@@ -470,7 +470,7 @@ data:
     
     # minio配置
     minio:
-      url: http://{{ .Values.external_url }}:30900/
+      url: http://{{ .Values.external_url.web }}/minio
       accessKey: {{ .Values.minio.accesskey }}
       secretKey: {{ .Values.minio.secretkey }}
       bucketName: dubhe-prod
@@ -590,7 +590,7 @@ data:
     
     # 数据处理医学影像数据集dcm服务器配置，查看影像功能需要使用该服务
     dcm:
-      host: "{{ .Values.external_url }}"
+      host: "{{ .Values.external_url.dcm }}"
       port: 31112
       
     # 资源回收
@@ -634,7 +634,7 @@ data:
     
     # 数据处理医学影像数据集dcm服务器配置，查看影像功能需要使用该服务
     dcm:
-      host: {{ .Values.external_url }}
+      host: {{ .Values.external_url.dcm }}
       port: 31112
     
     # ES服务地址及端口
@@ -748,8 +748,8 @@ data:
     model:
       measuring:
         url:
-          package: http://{{ .Values.external_url }}:32760/model_measure/package
-          json: http://{{ .Values.external_url }}:32760/model_measure/measure
+          package: http://{{ .Values.external_url.web }}/model_measure/package
+          json: http://{{ .Values.external_url.web }}/model_measure/measure
       converter:
         url: http://backend-model-converter.{{.Release.Namespace}}.svc.cluster.local:8080/model_convert
 
@@ -839,8 +839,8 @@ data:
     
     serving:
       gateway:
-        # 在线服务http接口域名,解析地址为serving网关部署的服务器地址
-        postfixUrl: {{ .Values.external_url }}:30081
+        # 在线服务http接口域名,解析地址为 serving 网关部署的服务器地址
+        postfixUrl: {{ .Values.external_url.serving }}:30081
         token:
           secret-key: 1n3512x
           expire-seconds: 108000
@@ -1002,7 +1002,7 @@ data:
       # 用户workspace目录
       workspace-dir: "workspace"
       # ssh主机
-      ssh-host: {{ .Values.external_url }}
+      ssh-host: {{ .Values.external_url.terminal }}
 
     # 可匿名访问路径
     security:

@@ -1,7 +1,11 @@
 global:
   storageClassName: "nfs-client"
 
-external_url: 101.32.11.146
+external_url: 
+  web: 101.32.11.146:30800
+  dcm: 101.32.11.146
+  serving: 101.32.11.146
+  terminal: 101.32.11.146
 
 redis:
   image:
