@@ -11,8 +11,8 @@ data:
           password: nacos
           context-path: /nacos
           config:
-            namespace: {{ .Release.Namespace }}
+            namespace: dubhe-prod
             server-addr: nacos:8848
           discovery:
-            namespace: {{ .Release.Namespace }}
+            namespace: dubhe-prod
             server-addr: nacos:8848

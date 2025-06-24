@@ -325,7 +325,7 @@ data:
       url: "http://{{ .Values.external_url }}:30900/"
       accessKey: {{ .Values.minio.accesskey }}
       secretKey: {{ .Values.minio.secretkey }}
-      bucketName: {{ .Release.Namespace }} 
+      bucketName: dubhe-prod
       presignedUrlExpiryTime: 300
       annotation: /annotation/
     
@@ -473,7 +473,7 @@ data:
       url: http://{{ .Values.external_url }}:30900/
       accessKey: {{ .Values.minio.accesskey }}
       secretKey: {{ .Values.minio.secretkey }}
-      bucketName: {{ .Release.Namespace }}
+      bucketName: dubhe-prod
       presignedUrlExpiryTime: 300
       annotation: /annotation/
     
@@ -1311,7 +1311,7 @@ spec:
             - name: NACOS_SERVER_HOST
               value: "nacos"
             - name: DUBHE_NACOS_NAMESPACE
-              value: {{ .Release.Namespace }}
+              value: dubhe-prod
           volumeMounts:
           - name: dubhe-config-volume
             mountPath: /dubhe
