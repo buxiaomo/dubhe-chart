@@ -13,6 +13,10 @@ minio:
   image:
     repository: "docker.io/minio/minio"
     tag: "RELEASE.2020-04-28T23-56-56Z"
+  mc:
+    image:
+      repository: "docker.io/minio/mc"
+      tag: "RELEASE.2020-04-25T00-43-23Z"
   accesskey: "admin"
   secretkey: "abcdefg123456"
 
