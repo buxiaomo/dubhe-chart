@@ -61,11 +61,11 @@ data:
     dubhe-proxy:
       visual:
         keyword: visual
-        server: "backend-visual.{{.Release.Namespace}}.svc.cluster.local"
+        server: backend-visual.{{.Release.Namespace}}.svc.cluster.local
         port: 9898
       refine:
         keyword: refine
-        server: "backend-visual.{{.Release.Namespace}}.svc.cluster.local"
+        server: backend-visual.{{.Release.Namespace}}.svc.cluster.local
         port: 9797
 
     ## 测试标识
@@ -262,7 +262,7 @@ data:
       redis:
         # 数据库索引
         database: 10
-        host: "{{ .Values.dubhe.redis.host }}"
+        host: {{ .Values.dubhe.redis.host }}
         port: {{ .Values.dubhe.redis.port }}
         password: {{ .Values.dubhe.redis.password }}
         # 连接超时时间
@@ -322,7 +322,7 @@ data:
     
     # minio配置
     minio:
-      url: "http://minio.{{.Release.Namespace}}.svc.cluster.local:9000/"
+      url: "http://{{ .Values.external_url }}:30900/"
       accessKey: {{ .Values.minio.accesskey }}
       secretKey: {{ .Values.minio.secretkey }}
       bucketName: {{ .Release.Namespace }} 
@@ -385,11 +385,11 @@ data:
     model:
       measuring:
         url:
-          package: "http://backend-model-measure.{{.Release.Namespace}}.svc.cluster.local:8080/model_measure/package"
-          json: "http://backend-model-measure.{{.Release.Namespace}}.svc.cluster.local:8080/model_measure/measure"
+          package: "http://{{ .Values.external_url }}:32760/model_measure/package"
+          json: "http://{{ .Values.external_url }}:32760/model_measure/measure"
       converter:
         url: "http://backend-model-converter.{{.Release.Namespace}}.svc.cluster.local:8080/model_convert"    
-    
+
     user:
       config:
         notebook-delay-delete-time: 8
@@ -418,7 +418,7 @@ data:
       namespace: namespace
       # elasticsearch暴露的服务地址
       elasticsearch:
-        hostlist: "${eshostlist:elasticsearch.{{.Release.Namespace}}.svc.cluster.local:9200}"
+        hostlist: ${eshostlist:elasticsearch.{{.Release.Namespace}}.svc.cluster.local:9200}
         # 日志采集配置信息
         log:
           type: _doc
@@ -436,9 +436,9 @@ data:
       # 展示Pod的CPU使用率,Memory使用量,GPU使用率的grafana地址
       pod:
         metrics:
-          grafanaUrl: "http://grafana.{{.Release.Namespace}}.svc.cluster.local/d/job/monitor?orgId=1%26refresh=5s%26kiosk%26var-pod="
+          grafanaUrl: http://grafana.{{.Release.Namespace}}.svc.cluster.local/d/job/monitor?orgId=1%26refresh=5s%26kiosk%26var-pod=
       prometheus:
-        url: "http://prometheus.{{.Release.Namespace}}.svc.cluster.local/"
+        url: http://prometheus.{{.Release.Namespace}}.svc.cluster.local/
         query: api/v1/query
         query-range: api/v1/query_range
         gpu-query-param: sum(container_accelerator_duty_cycle{pod="pod-name-placeholder"})by(pod,acc_id)
@@ -470,7 +470,7 @@ data:
     
     # minio配置
     minio:
-      url: "http://minio.{{.Release.Namespace}}.svc.cluster.local:9000/"
+      url: http://{{ .Values.external_url }}:30900/
       accessKey: {{ .Values.minio.accesskey }}
       secretKey: {{ .Values.minio.secretkey }}
       bucketName: {{ .Release.Namespace }}
@@ -585,13 +585,13 @@ data:
         # 文件存储服务器用户名
         userName: root
       #数据集训练配置
-      ptversion: "http://backend-data.{{.Release.Namespace}}.svc.cluster.local:8000/"
+      ptversion: http://backend-data.{{.Release.Namespace}}.svc.cluster.local:8000/
     
     
     # 数据处理医学影像数据集dcm服务器配置，查看影像功能需要使用该服务
     dcm:
-      host: "backend-dcm4chee.{{.Release.Namespace}}.svc.cluster.local"
-      port: 11112
+      host: "{{ .Values.external_url }}"
+      port: 31112
       
     # 资源回收
     recycle:
@@ -634,12 +634,12 @@ data:
     
     # 数据处理医学影像数据集dcm服务器配置，查看影像功能需要使用该服务
     dcm:
-      host: "backend-dcm4chee.{{.Release.Namespace}}.svc.cluster.local"
-      port: 11112
+      host: {{ .Values.external_url }}
+      port: 31112
     
     # ES服务地址及端口
     es:
-      host: "elasticsearch.{{.Release.Namespace}}.svc.cluster.local"
+      host: elasticsearch.{{.Release.Namespace}}.svc.cluster.local
       serverPort: 9200
       transportPort: 9200
       clusterName: kubernetes-logging
@@ -680,7 +680,7 @@ data:
         # 文件存储服务器用户名
         userName: root
       #数据集训练配置
-      ptversion: "http://backend-data.{{.Release.Namespace}}.svc.cluster.local:8000/"
+      ptversion: http://backend-data.{{.Release.Namespace}}.svc.cluster.local:8000/
     
     minioweb:
       GetToken:
@@ -706,7 +706,7 @@ data:
       
     # ES服务地址及端口
     es:
-      host: "elasticsearch.{{.Release.Namespace}}.svc.cluster.local"
+      host: elasticsearch.{{.Release.Namespace}}.svc.cluster.local
       serverPort: 9200
       transportPort: 9200
       clusterName: kubernetes-logging
@@ -748,10 +748,10 @@ data:
     model:
       measuring:
         url:
-          package: "http://backend-model-measure.{{.Release.Namespace}}.svc.cluster.local:8080/model_measure/package"
-          json: "http://backend-model-measure.{{.Release.Namespace}}.svc.cluster.local:8080/model_measure/measure"
+          package: http://{{ .Values.external_url }}:32760/model_measure/package
+          json: http://{{ .Values.external_url }}:32760/model_measure/measure
       converter:
-        url: "http://backend-model-converter.{{.Release.Namespace}}.svc.cluster.local:8080/model_convert"
+        url: http://backend-model-converter.{{.Release.Namespace}}.svc.cluster.local:8080/model_convert
 
   dubhe-notebook.yaml: |
     # 第三方创建的notebook初始化资源配置
@@ -778,7 +778,7 @@ data:
   dubhe-optimize.yaml: |
     # 模型优化容器镜像配置
     optimize:
-      image: OPTIMIZE_IMAGE
+      image: {{ .Values.dubhe.optimize.image }}
     
     #关闭熔断机制
     feign:
@@ -814,7 +814,6 @@ data:
     security:
       permitAll:
         matchers: /api/k8s/callback/pod/pointcloud
-
   dubhe-serving-gateway.yaml: |
     spring:
       # serving预测上传文件大小限制
@@ -841,7 +840,7 @@ data:
     serving:
       gateway:
         # 在线服务http接口域名,解析地址为serving网关部署的服务器地址
-        postfixUrl: "backend-gateway.{{.Release.Namespace}}.svc.cluster.local:8081"
+        postfixUrl: {{ .Values.external_url }}:30081
         token:
           secret-key: 1n3512x
           expire-seconds: 108000
@@ -888,7 +887,7 @@ data:
     #tadl模块配置
     tadl:
       # tadl镜像配置
-      image: TADL_IMAGE
+      image: {{ .Values.dubhe.tadl.image }}
       # docker中数据集路径
       docker-dataset-path: "/dataset"
     #  # docker中trial工作路径
@@ -972,7 +971,7 @@ data:
         # 文件存储服务器用户名
         userName: root
       #数据集训练配置
-      ptversion: "http://backend-data.{{.Release.Namespace}}.svc.cluster.local:8000/"
+      ptversion: http://backend-data.{{.Release.Namespace}}.svc.cluster.local:8000/
     
     minioweb:
       GetToken:
@@ -990,7 +989,7 @@ data:
     
     # ES服务地址及端口
     es:
-      host: "elasticsearch.{{.Release.Namespace}}.svc.cluster.local"
+      host: elasticsearch.{{.Release.Namespace}}.svc.cluster.local
       serverPort: 9200
       transportPort: 9200
       index: dataset_open_text
@@ -1003,8 +1002,8 @@ data:
       # 用户workspace目录
       workspace-dir: "workspace"
       # ssh主机
-      ssh-host: 0.0.0.0
-    
+      ssh-host: {{ .Values.external_url }}
+
     # 可匿名访问路径
     security:
       permitAll:

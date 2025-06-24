@@ -1,14 +1,16 @@
 global:
   storageClassName: "nfs-client"
 
+external_url: 101.32.11.146
+
 redis:
-  image: 
+  image:
     repository: "docker.io/library/redis"
     tag: "5.0.7"
   password: "Tianshu@123"
 
 minio:
-  image: 
+  image:
     repository: "docker.io/minio/minio"
     tag: "RELEASE.2020-04-28T23-56-56Z"
   accesskey: "admin"
@@ -102,3 +104,7 @@ dubhe:
     address: "192.168.1.228:5000"
     username: "admin"
     password: "Harbor12345"
+  optimize:
+    image: "192.168.2.228:5000/enlin/oneflow-gpu:base"
+  tadl:
+    image: "192.168.2.228:5000/enlin/automl-nas-pytorch17:v1"
