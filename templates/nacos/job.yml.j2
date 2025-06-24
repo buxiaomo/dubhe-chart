@@ -371,9 +371,9 @@ data:
     
     # 配置harbor
     harbor:
-      address: HARBOR_SERVER
-      username: HARBOR_USERNAME
-      password: HARBOR_PASSWORD
+      address: {{ .Values.dubhe.harbor.address }}
+      username: {{ .Values.dubhe.harbor.username }}
+      password: {{ .Values.dubhe.harbor.password }}
       model-name: train
     
     # 配置dev环境单元测试用户名与密码
@@ -463,9 +463,9 @@ data:
         gpu: 2
     #配置harbor
     harbor:
-      address: HARBOR_SERVER
-      username: HARBOR_USERNAME
-      password: HARBOR_PASSWORD
+      address: {{ .Values.dubhe.harbor.address }}
+      username: {{ .Values.dubhe.harbor.username }}
+      password: {{ .Values.dubhe.harbor.password }}
       model-name: train
     
     # minio配置
@@ -1217,9 +1217,9 @@ data:
   image.yaml: |
     # 配置harbor
     harbor:
-      address: HARBOR_SERVER
-      username: HARBOR_USERNAME
-      password: HARBOR_PASSWORD
+      address: {{ .Values.dubhe.harbor.address }}
+      username: {{ .Values.dubhe.harbor.username }}
+      password: {{ .Values.dubhe.harbor.password }}
 
   measure.yaml: |
     #配置数据源
