@@ -58,6 +58,10 @@ log:
       repository: "docker.io/fluent/fluent-bit:1.9.10"
 
 dubhe:
+  initContainers:
+    infra: 
+      image:
+        repository: "docker.io/buxiamo/curl:latest"
   image:
     host: "192.168.2.228:5000"
     repository: "zhijiangtianshu"
@@ -94,3 +98,7 @@ dubhe:
     host: redis
     port: 6379
     password: "Tianshu@123"
+  harbor:
+    address: "192.168.1.228:5000"
+    username: "admin"
+    password: "Harbor12345"
