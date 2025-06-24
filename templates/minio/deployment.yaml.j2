@@ -52,7 +52,7 @@ spec:
           env:
             - name: TZ
               value: "Asia/Shanghai"
-            - name: MINIO_ROOT_USER
+            - name: MINIO_ACCESS_KEY
               value: "{{ .Values.minio.accesskey }}"
-            - name: MINIO_ROOT_PASSWORD
+            - name: MINIO_SECRET_KEY
               value: "{{ .Values.minio.secretkey }}"
