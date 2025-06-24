@@ -67,18 +67,18 @@ spec:
             - name: http
               containerPort: 8011
               protocol: TCP
-          livenessProbe:
-            initialDelaySeconds: 10
-            periodSeconds: 10
-            timeoutSeconds: 5
-            tcpSocket:
-              port: 8011
-          readinessProbe:
-            initialDelaySeconds: 5
-            periodSeconds: 10
-            timeoutSeconds: 5
-            tcpSocket:
-              port: 8011
+          # livenessProbe:
+          #   initialDelaySeconds: 10
+          #   periodSeconds: 10
+          #   timeoutSeconds: 5
+          #   tcpSocket:
+          #     port: 8011
+          # readinessProbe:
+          #   initialDelaySeconds: 5
+          #   periodSeconds: 10
+          #   timeoutSeconds: 5
+          #   tcpSocket:
+          #     port: 8011
           env:
             - name: TZ
               value: "Asia/Shanghai"
