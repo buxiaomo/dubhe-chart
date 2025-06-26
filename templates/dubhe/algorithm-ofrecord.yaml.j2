@@ -26,7 +26,7 @@ spec:
             name: dubhe
       containers:
         - name: algorithm-ofrecord
-          image: registry.cn-hangzhou.aliyuncs.com/enlin/ofrecord:v1
+          image: "{{ .Values.dubhe.image.host }}/{{ .Values.dubhe.image.repository }}/dubhe-data-process:{{ .Values.dubhe.image.tag }}"
           imagePullPolicy: IfNotPresent
           lifecycle:
             preStop:

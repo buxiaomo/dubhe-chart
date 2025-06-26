@@ -97,6 +97,7 @@ dubhe:
       tag: "26.1.4-dind"
       insecure-registry:
         - "192.168.2.228:5000"
+        - "192.168.2.228:30002"
       hostPath: /data/jenkins/docker
   mysql:
     host: dubhe-mysql
@@ -109,7 +110,7 @@ dubhe:
     port: 6379
     password: "Tianshu@123"
   harbor:
-    address: "192.168.1.228:5000"
+    address: "192.168.2.228:30002"
     username: "admin"
     password: "Harbor12345"
   optimize:
