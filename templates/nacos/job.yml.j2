@@ -1290,7 +1290,7 @@ spec:
             if [ "$STATUS" -eq 200 ]; then
                 echo "Config ${filename} already exists, skipping creation."
             else
-                curl -X POST "http://${NACOS_SERVER_HOST}:${NACOS_SERVER_PORT}/nacos/v1/cs/configs" --data "tenant=${DUBHE_NACOS_NAMESPACE}&&dataId=kubeconfig.yaml&group=dubhe&type=yaml&content=`cat /dubhe/kubeconfig.yaml`"
+                curl -s -X POST "http://${NACOS_SERVER_HOST}:${NACOS_SERVER_PORT}/nacos/v1/cs/configs" --data "tenant=${DUBHE_NACOS_NAMESPACE}&&dataId=kubeconfig.yaml&group=dubhe&type=yaml&content=`cat /dubhe/kubeconfig.yaml`"
             fi
           env:
             - name: NACOS_SERVER_HOST
