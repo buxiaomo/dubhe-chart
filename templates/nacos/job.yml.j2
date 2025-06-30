@@ -4,14 +4,14 @@ metadata:
   name: dubhe-config
 data:
   kubeconfig.yaml: |-
-{{ .Files.Get "/etc/kubernetes/remote-access.kubeconfig" | indent 4 }}
+{{ .Files.Get "files/remote-access.kubeconfig" | indent 4 }}
 
   admin.yaml: |
     #密码加密传输，前端公钥加密，后端私钥解密
     rsa:
       private_key: MIIBUwIBADANBgkqhkiG9w0BAQEFAASCAT0wggE5AgEAAkEA0vfvyTdGJkdbHkB8mp0f3FE0GYP3AYPaJF7jUd1M0XxFSE2ceK3k2kw20YvQ09NJKk%2BOMjWQl9WitG9pB6tSCQIDAQABAkA2SimBrWC2%2FwvauBuYqjCFwLvYiRYqZKThUS3MZlebXJiLB%2BUe%2FgUifAAKIg1avttUZsHBHrop4qfJCwAI0%2BYRAiEA%2BW3NK%2FRaXtnRqmoUUkb59zsZUBLpvZgQPfj1MhyHDz0CIQDYhsAhPJ3mgS64NbUZmGWuuNKp5coY2GIj%2FzYDMJp6vQIgUueLFXv%2FeZ1ekgz2Oi67MNCk5jeTF2BurZqNLR3MSmUCIFT3Q6uHMtsB9Eha4u7hS31tj1UWE%2BD%2BADzp59MGnoftAiBeHT7gDMuqeJHPL4b%2BkC%2BgzV4FGTfhR9q3tTbklZkD2A%3D%3D%0A
       public_key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBANL378k3RiZHWx5AfJqdH9xRNBmD9wGD2iRe41HdTNF8RUhNnHit5NpMNtGL0NPTSSpPjjI1kJfVorRvaQerUgkCAwEAAQ%3D%3D%0A%0A
-    
+
     # 后台添加用户的初始密码
     initial_password: "123456"
 
