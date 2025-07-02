@@ -41,8 +41,8 @@ spec:
             name: dubhe
       containers:
         - name: backend-model-converter
-          # image: "{{ .Values.dubhe.image.host }}/{{ .Values.dubhe.image.repository }}/model-converter:{{ .Values.dubhe.image.tag }}"
-          image: "registry.cn-hangzhou.aliyuncs.com/enlin/model-converter:v1"
+          image: "{{ .Values.dubhe.image.host }}/{{ .Values.dubhe.image.repository }}/model-converter:{{ .Values.dubhe.image.tag }}"
+          # image: "registry.cn-hangzhou.aliyuncs.com/enlin/model-converter:v1"
           imagePullPolicy: IfNotPresent
           command:
             - /bin/bash
