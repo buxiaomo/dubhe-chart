@@ -38,18 +38,29 @@ spec:
             defaultMode: 0755
             name: dubhe
       initContainers:
-        - name: wait-for-service
-          image: docker.io/buxiaomo/curl:latest
+        - name: wait-for-mysql
+          image: docker.io/library/busybox:1.37.0
           command: 
           - 'sh'
           - '-c'
           - |
             set -x
-            until curl -sf http://nacos:8848/nacos; do
+            until nc -z dubhe-mysql 3306; do
               echo "Waiting for service to be ready..."
               sleep 5
             done
-
+            echo "Service is ready."
+        - name: wait-for-nacos
+          image: docker.io/library/busybox:1.37.0
+          command: 
+          - 'sh'
+          - '-c'
+          - |
+            set -x
+            until  wget -q http://nacos:8848/nacos -O /dev/null; do
+              echo "Waiting for service to be ready..."
+              sleep 5
+            done
             echo "Service is ready."
       containers:
         - name: backend-admin
