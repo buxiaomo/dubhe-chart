@@ -44,8 +44,8 @@ spec:
         gpu: "true"
       containers:
         - name: backend-model-measure
-          # image: "{{ .Values.dubhe.image.host }}/{{ .Values.dubhe.image.repository }}/model-measuring:{{ .Values.dubhe.image.tag }}"
-          image: "registry.cn-hangzhou.aliyuncs.com/enlin/model-measuring:v1"
+          image: "{{ .Values.dubhe.image.host }}/{{ .Values.dubhe.image.repository }}/model-measuring:{{ .Values.dubhe.image.tag }}"
+          # image: "registry.cn-hangzhou.aliyuncs.com/enlin/model-measuring:v1"
           imagePullPolicy: IfNotPresent
           command:
             - /bin/bash
