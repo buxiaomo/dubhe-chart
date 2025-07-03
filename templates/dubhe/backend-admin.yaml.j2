@@ -39,7 +39,7 @@ spec:
             name: dubhe
       initContainers:
         - name: wait-for-mysql
-          image: docker.io/library/busybox:1.37.0
+          image: "{{ .Values.dubhe.initContainers.infra.image.repository }}"
           command: 
           - 'sh'
           - '-c'
@@ -51,7 +51,7 @@ spec:
             done
             echo "Service is ready."
         - name: wait-for-nacos
-          image: docker.io/library/busybox:1.37.0
+          image: "{{ .Values.dubhe.initContainers.infra.image.repository }}"
           command: 
           - 'sh'
           - '-c'

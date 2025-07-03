@@ -67,11 +67,12 @@ log:
     image:
       repository: "docker.io/fluent/fluent-bit:1.9.10"
 
+
 dubhe:
   initContainers:
     infra: 
       image:
-        repository: "docker.io/buxiamo/curl:8.12.1"
+        repository: "docker.io/library/busybox:1.37.0"
   image:
     host: "192.168.2.228:5000"
     repository: "zhijiangtianshu"

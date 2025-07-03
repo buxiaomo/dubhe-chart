@@ -1,5 +1,6 @@
 # dubhe helm
 ```
+cp 
 helm upgrade -i dubhe ./ -n dubhe-system --create-namespace \
 --set global.storageClassName=local-path \
 --set dubhe.cicd.enabled=true 
