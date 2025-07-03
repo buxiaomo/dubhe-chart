@@ -82,13 +82,17 @@ spec:
               containerPort: 8960
               protocol: TCP
           livenessProbe:
-            initialDelaySeconds: 10
+            initialDelaySeconds: 45
+            failureThreshold: 5
+            successThreshold: 2
             periodSeconds: 10
             timeoutSeconds: 5
             tcpSocket:
               port: 8960
           readinessProbe:
-            initialDelaySeconds: 5
+            initialDelaySeconds: 10
+            failureThreshold: 3
+            successThreshold: 2
             periodSeconds: 10
             timeoutSeconds: 5
             tcpSocket:

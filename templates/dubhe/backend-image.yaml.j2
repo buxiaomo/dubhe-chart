@@ -79,13 +79,17 @@ spec:
               containerPort: 8822
               protocol: TCP
           livenessProbe:
-            initialDelaySeconds: 10
+            initialDelaySeconds: 45
+            failureThreshold: 5
+            successThreshold: 2
             periodSeconds: 10
             timeoutSeconds: 5
             tcpSocket:
               port: 8822
           readinessProbe:
             initialDelaySeconds: 10
+            failureThreshold: 3
+            successThreshold: 2
             periodSeconds: 10
             timeoutSeconds: 5
             tcpSocket:
