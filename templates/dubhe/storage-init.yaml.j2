@@ -13,7 +13,7 @@ spec:
             type: DirectoryOrCreate
       containers:
         - name: storage-init
-          image: "{{ .Values.dubhe.image.host }}/{{ .Values.dubhe.image.repository }}/storage-init:{{ .Values.dubhe.image.tag }}"
+          image: "{{ .Values.dubhe.image.host }}/{{ .Values.dubhe.image.repository }}/storage-init:latest"
           imagePullPolicy: IfNotPresent
           env:
             - name: DUBHE_ENVIRONMENT
