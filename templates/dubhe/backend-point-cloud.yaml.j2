@@ -79,7 +79,7 @@ spec:
           livenessProbe:
             initialDelaySeconds: 45
             failureThreshold: 5
-            successThreshold: 2
+            successThreshold: 1
             periodSeconds: 10
             timeoutSeconds: 5
             tcpSocket:
@@ -87,7 +87,7 @@ spec:
           readinessProbe:
             initialDelaySeconds: 10
             failureThreshold: 3
-            successThreshold: 2
+            successThreshold: 1
             periodSeconds: 10
             timeoutSeconds: 5
             tcpSocket:
