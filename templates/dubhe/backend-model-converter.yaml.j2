@@ -60,18 +60,22 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
-          # livenessProbe:
-          #   initialDelaySeconds: 10
-          #   periodSeconds: 10
-          #   timeoutSeconds: 5
-          #   tcpSocket:
-          #     port: 8080
-          # readinessProbe:
-          #   initialDelaySeconds: 5
-          #   periodSeconds: 10
-          #   timeoutSeconds: 5
-          #   tcpSocket:
-          #     port: 8080
+          livenessProbe:
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            httpGet:
+              path: /hello
+              port: 8080
+              scheme: HTTP
+          readinessProbe:
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 5
+            httpGet:
+              path: /hello
+              port: 8080
+              scheme: HTTP
           env:
             - name: TZ
               value: "Asia/Shanghai"
