@@ -1278,7 +1278,7 @@ spec:
             for filename in `ls /dubhe`
             do
                 echo $filename
-                STATUS=$(curl -o /dev/null -s -w "%{http_code}" "http://${NACOS_SERVER_HOST}:${NACOS_SERVER_PORT}/nacos/v1/cs/configs?tenant=${DUBHE_NACOS_NAMESPACE}&&dataId=${filename}&group=dubhe")
+                STATUS=$(curl -o /dev/null -s -w "%{http_code}" "http://${NACOS_SERVER_HOST}:${NACOS_SERVER_PORT}/nacos/v1/cs/configs?tenant=${DUBHE_NACOS_NAMESPACE}&dataId=${filename}&group=dubhe")
                 if [ "$STATUS" -eq 200 ]; then
                     echo "Config ${filename} already exists, skipping creation."
                     continue
@@ -1286,7 +1286,7 @@ spec:
                 curl -X POST "http://${NACOS_SERVER_HOST}:${NACOS_SERVER_PORT}/nacos/v1/cs/configs" --data "tenant=${DUBHE_NACOS_NAMESPACE}&&dataId=${filename}&group=dubhe&type=yaml&content=`cat /dubhe/${filename}`"
             done
 
-            STATUS=$(curl -o /dev/null -s -w "%{http_code}" "http://${NACOS_SERVER_HOST}:${NACOS_SERVER_PORT}/nacos/v1/cs/configs?tenant=${DUBHE_NACOS_NAMESPACE}&&dataId=kubeconfig.yaml&group=dubhe")
+            STATUS=$(curl -o /dev/null -s -w "%{http_code}" "http://${NACOS_SERVER_HOST}:${NACOS_SERVER_PORT}/nacos/v1/cs/configs?tenant=${DUBHE_NACOS_NAMESPACE}&dataId=kubeconfig.yaml&group=dubhe")
             if [ "$STATUS" -eq 200 ]; then
                 echo "Config ${filename} already exists, skipping creation."
             else
