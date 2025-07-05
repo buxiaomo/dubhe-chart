@@ -24,6 +24,19 @@ spec:
           configMap:
             defaultMode: 0755
             name: dubhe
+      initContainers:
+        - name: wait-for-mysql
+          image: "{{ .Values.dubhe.initContainers.infra.image.repository }}"
+          command: 
+          - 'sh'
+          - '-c'
+          - |
+            set -x
+            until nc -z redis 6379; do
+              echo "Waiting for service to be ready..."
+              sleep 5
+            done
+            echo "Service is ready."
       containers:
         - name: algorithm-videosample
           image: "{{ .Values.dubhe.image.host }}/{{ .Values.dubhe.image.repository }}/dubhe-data-process:{{ .Values.dubhe.image.tag }}"
