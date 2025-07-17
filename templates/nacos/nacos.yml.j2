@@ -24,7 +24,7 @@ spec:
             name: nacos
       initContainers:
         - name: wait-for-mysql
-          image: "{{ .Values.dubhe.initContainers.infra.image.repository }}"
+          image: "{{ .Values.dubhe.initContainers.infra.image.repository }}:{{ .Values.dubhe.initContainers.infra.image.tag }}"
           command: 
           - 'sh'
           - '-c'
@@ -44,13 +44,13 @@ spec:
               containerPort: 8848
               protocol: TCP
           livenessProbe:
-            initialDelaySeconds: 10
+            initialDelaySeconds: 90
             periodSeconds: 5
             timeoutSeconds: 5
             tcpSocket:
               port: 8848
           readinessProbe:
-            initialDelaySeconds: 5
+            initialDelaySeconds: 15
             periodSeconds: 5
             timeoutSeconds: 5
             tcpSocket:

@@ -39,7 +39,7 @@ spec:
             name: dubhe
       initContainers:
         - name: wait-for-mysql
-          image: "{{ .Values.dubhe.initContainers.infra.image.repository }}"
+          image: "{{ .Values.dubhe.initContainers.infra.image.repository }}:{{ .Values.dubhe.initContainers.infra.image.tag }}"
           command: 
           - 'sh'
           - '-c'
@@ -51,7 +51,7 @@ spec:
             done
             echo "Service is ready."
         - name: wait-for-nacos
-          image: "{{ .Values.dubhe.initContainers.infra.image.repository }}"
+          image: "{{ .Values.dubhe.initContainers.infra.image.repository }}:{{ .Values.dubhe.initContainers.infra.image.tag }}"
           command: 
           - 'sh'
           - '-c'
@@ -77,7 +77,7 @@ spec:
               containerPort: 8865
               protocol: TCP
           livenessProbe:
-            initialDelaySeconds: 60
+            initialDelaySeconds: 90
             failureThreshold: 5
             successThreshold: 1
             periodSeconds: 10
@@ -85,7 +85,7 @@ spec:
             tcpSocket:
               port: 8865
           readinessProbe:
-            initialDelaySeconds: 10
+            initialDelaySeconds: 30
             failureThreshold: 3
             successThreshold: 1
             periodSeconds: 10
