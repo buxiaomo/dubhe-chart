@@ -41,7 +41,7 @@ monitoring:
     infra: 
       image:
         repository: "docker.io/library/alpine"
-        tag: "3.6"
+        tag: "3.22.0"
   nodexporter: 
     image:
       repository: "docker.io/prom/node-exporter"
@@ -60,7 +60,7 @@ log:
     infra: 
       image:
         repository: "docker.io/library/alpine"
-        tag: "3.6"
+        tag: "3.22.0"
   elasticsearch: 
     image:
       repository: "docker.elastic.co/elasticsearch/elasticsearch"
